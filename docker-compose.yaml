@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  minio-server:
+    container_name: "minio-server"
+    image: minio/minio:latest
+    ports:
+      - "9100:9000"
+      - "9101:9001"
+    environment:
+      MINIO_ROOT_USER: 79UHfuRuhBX7crhk
+      MINIO_ROOT_PASSWORD: TJTudqum5vRS3CaT
+    command: server /data --console-address ":9001"
+    volumes:
+      - data:/data
+    networks:
+      - minio
+
+volumes: 
+  data:
+
+networks: 
+  minio:
+    driver: bridge
+    external: true
+  
+
+
+
